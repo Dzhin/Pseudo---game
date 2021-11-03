@@ -31,7 +31,7 @@ constructor(address castle) public {
     function setDefenseW(uint v) public{
         setDefense(v);
     }
- 
+    
   
     
 }

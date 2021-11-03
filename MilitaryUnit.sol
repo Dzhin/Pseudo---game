@@ -22,7 +22,7 @@ abstract contract MilitaryUnit is GameObject {
         }
         setCurHp(v-getDefense());
     }   
-    function commonAttack(InterfaceGameObject enemy) internal{
+    function commonAttack(InterfaceGameObject enemy) public{
         tvm.accept();
         enemy.hurtYourself(getAttack());
     }
