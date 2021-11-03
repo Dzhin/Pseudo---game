@@ -8,4 +8,5 @@ pragma AbiHeader expire;
 
 interface InterfaceGameObject{
     function hurtYourself(uint v) external;
+    function dieTogether(address dest, uint128 value, bool bounce)external;
 }

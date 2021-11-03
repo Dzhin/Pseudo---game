@@ -8,31 +8,27 @@ pragma AbiHeader expire;
 import "GameObject.sol";
 //import "MilitaryBase.sol";
 // This is class that describes you smart contract.
-contract MilitaryUnit is GameObject {
-    address private addressMilitaryBase;
-    //MilitaryBase militaryBase;
-    constructor(address castle) public {
-        // Check that contract's public key is set
-        require(tvm.pubkey() != 0, 101);
-        // Check that message has signature (msg.pubkey() is not zero) and
-        // message is signed with the owner's private key
-        require(msg.pubkey() == tvm.pubkey(), 102);
-        // The current smart contract agrees to buy some gas to finish the
-        // current transaction. This actions required to process external
-        // messages, which bring no value (henceno gas) with themselves.
+abstract contract MilitaryUnit is GameObject {
+    address internal addressMilitaryBase;
+    // constructor(address castle) public {
+    //     addressMilitaryBase = castle;
+    // }
+    function hurtYourself(uint v) external override{
         tvm.accept();
-        addressMilitaryBase = castle;
-        //militaryBase=castle;
-        //castle.addMilitaryUnit(msg.sender);
- 
-    }
-    
-    function commonAttack(InterfaceGameObject enemy) public{
+        if (v<=getDefense()) return;
+        if (getCurHp()<=v-getDefense()){
+            toDie(msg.sender, 666, true);
+            return;
+        }
+        setCurHp(v-getDefense());
+    }   
+    function commonAttack(InterfaceGameObject enemy) internal{
         tvm.accept();
         enemy.hurtYourself(getAttack());
     }
 
-    function dieTogether(address dest, uint128 value, bool bounce) public{
+   // function dieTogether(address dest, uint128 value, bool bounce) virtual external override;
+    function dieTogether(address dest, uint128 value, bool bounce) external override{
         require(msg.sender==addressMilitaryBase,104);
         tvm.accept();
         toDie(dest, 666, bounce);

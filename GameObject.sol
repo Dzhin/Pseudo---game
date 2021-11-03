@@ -8,7 +8,7 @@ pragma AbiHeader expire;
 
 import "InterfaceGameObject.sol";
 // This is class that describes you smart contract.
-contract GameObject is InterfaceGameObject {
+abstract contract GameObject is InterfaceGameObject {
 
     string private class;
     uint private hp;
@@ -24,7 +24,9 @@ contract GameObject is InterfaceGameObject {
 		tvm.accept();
 		_;
 	}
-
+    function toDie(address dest, uint128 value, bool bounce) internal pure checkOwnerAndAccept {   
+        dest.transfer(value, bounce, 160);
+    }
 
     function hurtYourself(uint v) virtual external override{
         tvm.accept();
@@ -35,10 +37,8 @@ contract GameObject is InterfaceGameObject {
         }
         curHp-=v-defense;
     }
+    function dieTogether(address dest, uint128 value, bool bounce)virtual external override;
 
-    function toDie(address dest, uint128 value, bool bounce) internal pure checkOwnerAndAccept {   
-        dest.transfer(value, bounce, 160);
-    }
     function setHp(uint v) internal{
         hp=v;
     }

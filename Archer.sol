@@ -6,32 +6,28 @@
 pragma ton-solidity >= 0.35.0;
 pragma AbiHeader expire;
 import "MilitaryUnit.sol";
-import "InterfaceGameObject.sol";
-
-contract Warrior is MilitaryUnit{
-
-constructor(address castle) public {
+// This is class that describes you smart contract.
+contract Archer is MilitaryUnit{
+    
+   constructor(address castle) public {
         require(tvm.pubkey() != 0, 101);
         require(msg.pubkey() == tvm.pubkey(), 102);
         tvm.accept();
      
         addressMilitaryBase = castle;
-
-        setClass("Воин");
-        setDefense(2);
-        setDescription("Могучий воин");
+        setClass("Лучник");
+        setDefense(1);
+        setDescription("Могучий стрелок");
         setHp(5);
         setCurHp(5);
-        setAttack(2);
-    }   
-
+        setAttack(3);
+    }
     function setAttackW(uint v) public{
         setAttack(v);
     }
     function setDefenseW(uint v) public{
         setDefense(v);
     }
- 
-  
+
     
 }

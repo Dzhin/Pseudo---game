@@ -1,0 +1,113 @@
+{
+	"ABI version": 2,
+	"version": "2.1",
+	"header": ["time", "expire"],
+	"functions": [
+		{
+			"name": "constructor",
+			"inputs": [
+				{"name":"castle","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "setAttackW",
+			"inputs": [
+				{"name":"v","type":"uint256"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "setDefenseW",
+			"inputs": [
+				{"name":"v","type":"uint256"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "hurtYourself",
+			"inputs": [
+				{"name":"v","type":"uint256"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "dieTogether",
+			"inputs": [
+				{"name":"dest","type":"address"},
+				{"name":"value","type":"uint128"},
+				{"name":"bounce","type":"bool"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getCurHp",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"value0","type":"uint256"}
+			]
+		},
+		{
+			"name": "getHp",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"value0","type":"uint256"}
+			]
+		},
+		{
+			"name": "getAttack",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"value0","type":"uint256"}
+			]
+		},
+		{
+			"name": "getDefense",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"value0","type":"uint256"}
+			]
+		},
+		{
+			"name": "getClass",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"value0","type":"string"}
+			]
+		},
+		{
+			"name": "getDescription",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"value0","type":"string"}
+			]
+		}
+	],
+	"data": [
+	],
+	"events": [
+	],
+	"fields": [
+		{"name":"_pubkey","type":"uint256"},
+		{"name":"_timestamp","type":"uint64"},
+		{"name":"_constructorFlag","type":"bool"},
+		{"name":"class","type":"string"},
+		{"name":"hp","type":"uint256"},
+		{"name":"attack","type":"uint256"},
+		{"name":"defense","type":"uint256"},
+		{"name":"curHp","type":"uint256"},
+		{"name":"description","type":"string"},
+		{"name":"addressMilitaryBase","type":"address"}
+	]
+}
